@@ -1,6 +1,6 @@
-﻿namespace Entities;
+﻿namespace BackEnd.DTOs;
 
-public class Periodo
+public class PeriodoDTO
 {
     public int PeriodoId { get; set; }
     public int? TipoConceptoId { get; set; }

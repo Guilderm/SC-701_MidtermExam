@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace Entities;
 
-namespace Entities
+public class Role
 {
-    public partial class Role
+    public Role()
     {
-        public Role()
-        {
-            UserUsers = new HashSet<User>();
-        }
-
-        public int RoleId { get; set; }
-        public string? RoleName { get; set; }
-
-        public virtual ICollection<User> UserUsers { get; set; }
+        UserUsers = new HashSet<User>();
     }
+
+    public int RoleId { get; set; }
+    public string? RoleName { get; set; }
+
+    public virtual ICollection<User> UserUsers { get; set; }
 }
