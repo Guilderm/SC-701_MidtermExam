@@ -15,7 +15,7 @@ builder.Logging.ClearProviders();
 builder.Logging.AddSerilog(logger);
 
 //Add dependency injection
-//builder.Services.AddScoped<CategoryService>();
+//builder.Services.AddScoped<PeriodoService>();
 
 WebApplication app = builder.Build();
 
