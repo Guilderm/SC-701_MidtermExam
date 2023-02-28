@@ -1,3 +1,4 @@
+using FrontEnd.Services;
 using Serilog;
 using Serilog.Core;
 
@@ -15,7 +16,7 @@ builder.Logging.ClearProviders();
 builder.Logging.AddSerilog(logger);
 
 //Add dependency injection
-//builder.Services.AddScoped<PeriodoService>();
+builder.Services.AddScoped<PeriodoService>();
 
 WebApplication app = builder.Build();
 
