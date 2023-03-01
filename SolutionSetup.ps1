@@ -9,13 +9,13 @@
 
 
 # sets the names and directory
-$solutionName = "MidtermExam"
+$solutionName = "Personas"
 $EntityName = "Entities"
 $DALName = "DAL"
 $BackEndName = "BackEnd"
 $FrontEndName = "FrontEnd"
-$DBName = "Comercio" #THe database needs to exist, 
-$basePath = "C:\Users\guild\Documents\GitHub\SC-701_MidtermExam2"
+$DBName = "Examen" #THe database needs to exist, 
+$basePath = "$($env:USERPROFILE)\Documents\Repositories"
 
 
 # create the solution folder
