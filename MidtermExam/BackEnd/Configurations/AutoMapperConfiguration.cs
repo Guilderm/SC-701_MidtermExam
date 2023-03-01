@@ -8,6 +8,6 @@ public class AutoMapperConfiguration : Profile
 {
     public AutoMapperConfiguration()
     {
-        CreateMap<Periodo, PeriodoDTO>().ReverseMap();
+        CreateMap<Persona, PeriodoDTO>().ReverseMap();
     }
 }

@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BackEnd.Controllers;
 
-public class PeriodoController : GenericControllers<Periodo, PeriodoDTO>
+public class PersonaController : GenericControllers<Persona, PersonaDTO>
 {
-    private readonly ILogger<PeriodoController> _logger;
+    private readonly ILogger<PersonaController> _logger;
 
-    public PeriodoController(IUnitOfWork unitOfWork, IMapper mapper, ILogger<PeriodoController> logger) : base(
+    public PersonaController(IUnitOfWork unitOfWork, IMapper mapper, ILogger<PersonaController> logger) : base(
         unitOfWork, mapper)
     {
         _logger = logger;
@@ -19,7 +19,7 @@ public class PeriodoController : GenericControllers<Periodo, PeriodoDTO>
     #region POST|Create - Used to create a new resource.
 
     [HttpPost]
-    public override IActionResult Post([FromBody] PeriodoDTO requestDto)
+    public override IActionResult Post([FromBody] PersonaDTO requestDto)
     {
         _logger.LogInformation($"will look for Entity with of name {nameof(requestDto)} and see if we get it.");
 
@@ -29,14 +29,14 @@ public class PeriodoController : GenericControllers<Periodo, PeriodoDTO>
             return BadRequest(ModelState);
         }
 
-        Periodo mappedResult = Mapper.Map<Periodo>(requestDto);
+        Persona mappedResult = Mapper.Map<Persona>(requestDto);
 
         Repository.Insert(mappedResult);
         UnitOfWork.SaveChanges();
 
-        _logger.LogCritical($"The ID of Entity with of name {nameof(requestDto)} is {mappedResult.PeriodoId} .");
+        _logger.LogCritical($"The ID of Entity with of name {nameof(requestDto)} is {mappedResult.PersonaId} .");
 
-        return CreatedAtAction(nameof(Get), new { id = mappedResult.PeriodoId }, mappedResult);
+        return CreatedAtAction(nameof(Get), new { id = mappedResult.PersonaId }, mappedResult);
     }
 
     #endregion

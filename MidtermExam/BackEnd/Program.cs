@@ -27,7 +27,7 @@ builder.Logging.ClearProviders();
 builder.Logging.AddSerilog(logger);
 
 //Adds dependancy Ingection
-builder.Services.AddDbContext<ComercioContext>();
+builder.Services.AddDbContext<ExamenContext>();
 builder.Services.AddTransient<IUnitOfWork, UnitOfWork>();
 
 

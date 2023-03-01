@@ -7,12 +7,12 @@ namespace DAL.Repositories;
 
 public class UnitOfWork : IUnitOfWork, IDisposable
 {
-    private readonly ComercioContext _dbContext;
+    private readonly ExamenContext _dbContext;
     private readonly ILogger<UnitOfWork> _logger;
     private readonly ILoggerFactory _loggerFactory;
     private bool _disposed;
 
-    public UnitOfWork(ILogger<UnitOfWork> logger, ComercioContext dbContext, ILoggerFactory loggerFactory)
+    public UnitOfWork(ILogger<UnitOfWork> logger, ExamenContext dbContext, ILoggerFactory loggerFactory)
     {
         _loggerFactory = loggerFactory;
         _logger = logger;

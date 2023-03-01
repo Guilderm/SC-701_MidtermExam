@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace Entities;
 
-namespace Entities
+public class Distrito
 {
-    public partial class Distrito
-    {
-        public int DistritoId { get; set; }
-        public string Nombre { get; set; } = null!;
-    }
+    public int DistritoId { get; set; }
+    public string Nombre { get; set; } = null!;
 }
