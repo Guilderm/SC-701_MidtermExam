@@ -15,7 +15,7 @@ $DALName = "DAL"
 $BackEndName = "BackEnd"
 $FrontEndName = "FrontEnd"
 $DBName = "Comercio" #THe database needs to exist, 
-$basePath = "C:\Users\guild\Documents\GitHub\SC-701_MidtermExam"
+$basePath = "C:\Users\guild\Documents\GitHub\SC-701_MidtermExam2"
 
 
 # create the solution folder
@@ -38,7 +38,7 @@ dotnet add reference ../$EntityName/$EntityName.csproj
 cd ..
 
 # create the BackEnd project
-dotnet new webapi -n $BackEndName -o $BackEndName --no-https --framework net6.0
+dotnet new webapi -n $BackEndName -o $BackEndName --no-https --nullable false --framework net6.0
 cd $BackEndName
 dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection --version *
 dotnet Add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 6.* #For some reason it is not getting installed
@@ -53,7 +53,7 @@ dotnet add reference ../$EntityName/$EntityName.csproj
 cd ..
 
 # create the FrontEnd project
-dotnet new mvc -n $FrontEndName -o $FrontEndName --no-https --framework net6.0
+dotnet new mvc -n $FrontEndName -o $FrontEndName --no-https --nullable false --framework net6.0
 cd $FrontEndName
 dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design --version 6.*
 dotnet add package Microsoft.AspNetCore.Mvc.NewtonsoftJson --version 6.*
@@ -103,10 +103,9 @@ $BackEndName = "BackEnd"
 $FrontEndName = "FrontEnd"
 $basePath = "C:\Users\guild\Documents\GitHub\SC-701_MidtermExam"
 
-$EntityClassName = "Factura"
-$outDir = "Views/" + $EntityClassName
-#$model = "${FrontEndName}.Models.${$EntityClassName}ViewModel" #could not get this working
-$model = "Frontend.Models.FacturaViewModel"
+$EntityClassName = "Personas"
+$outDir = "Views/Persona"
+$model = "FrontEnd.Models.PersonaViewModel"
 
 #checks to see if "dotnet-aspnet-codegenerator" is install before tring to do so.
 if (!(dotnet tool list -g | Select-String -Pattern "dotnet-aspnet-codegenerator")) {
@@ -114,20 +113,17 @@ if (!(dotnet tool list -g | Select-String -Pattern "dotnet-aspnet-codegenerator"
 }
 
 <#
-#creates the backend Controller
-cd "$basePath\$solutionName\$BackEndName"
-dotnet aspnet-codegenerator controller -name $EntityClassName -actions -api -outDir Controllers
-
 #creates the Frontend Controller
 cd "$basePath\$solutionName\$FrontEndName"
-dotnet aspnet-codegenerator controller -name $EntityClassName -actions -outDir Controllers
+#dotnet aspnet-codegenerator controller -name $EntityClassName -actions -outDir Controllers
 
 #Create the views
-dotnet aspnet-codegenerator view Create Create --model $model -outDir $outDir
-dotnet aspnet-codegenerator view Edit Edit --model $model -outDir $outDir
-dotnet aspnet-codegenerator view Delete Delete --model $model -outDir $outDir
-dotnet aspnet-codegenerator view Details Details --model $model -outDir $outDir
-dotnet aspnet-codegenerator view Index List --model $model -outDir $outDir
+cd "$basePath\$solutionName\$FrontEndName"
+dotnet aspnet-codegenerator view Create Create --useDefaultLayout --model $model -outDir $outDir
+dotnet aspnet-codegenerator view Edit Edit --useDefaultLayout --model $model -outDir $outDir
+dotnet aspnet-codegenerator view Delete Delete --useDefaultLayout --model $model -outDir $outDir
+dotnet aspnet-codegenerator view Details Details --useDefaultLayout --model $model -outDir $outDir
+dotnet aspnet-codegenerator view Index List --useDefaultLayout --model $model -outDir $outDir
 #>
 
 #Clean and build the solution
