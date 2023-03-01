@@ -31,6 +31,14 @@ public class PersonaController : GenericControllers<Persona, PersonaDTO>
 
         Persona mappedResult = Mapper.Map<Persona>(requestDto);
 
+        // Check if PersonaId already exists
+        if (Repository.Get(mappedResult.PersonaId) != null)
+        {
+            _logger.LogError(
+                $"Invalid POST attempt in {nameof(requestDto)}. {nameof(Persona.PersonaId)} already exists");
+            return BadRequest($"{nameof(Persona.PersonaId)} already exists");
+        }
+
         Repository.Insert(mappedResult);
         UnitOfWork.SaveChanges();
 
